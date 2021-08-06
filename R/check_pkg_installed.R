@@ -1,0 +1,27 @@
+#' @title Check whether package is installed and return an error message
+#'
+#' @description Checks whether a package is installed in the user's machine
+#' based on a search on the package name string. If the package is not
+#' installed, an error message is returned.
+#'
+#' @param pkgname String containing the name of the package to check whether is
+#' installed.
+#'
+#' @noRd
+#'
+check_pkg_installed <- function(pkgname) {
+
+  mtry <- try(find.package(package = pkgname))
+
+  if (inherits(mtry, "try-error")) {
+    stop(
+      paste0(
+        "\n\nPackage ", wrap(pkgname, wrapper = "`"),
+        " is required to run this function and is currently not installed.\n",
+        "Please install package ",
+        wrap(pkgname, wrapper = "`"),
+        " to proceed. "
+      )
+    )
+  }
+}

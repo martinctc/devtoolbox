@@ -1,0 +1,128 @@
+---
+date: "`r Sys.Date()`"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+params:
+  pkgname: pkgname
+  set_title: report_title
+title: "`r params$set_title`"      
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+```{r}
+## Get user data
+pkgname <- params$pkgname
+
+library(cranlogs)
+library(dplyr)
+library(ggplot2)
+do.call(library, args = list("package" = pkgname))
+
+cran_df <-
+  cranlogs::cran_downloads(
+  packages = pkgname,
+  when = "last-month"
+  )
+
+cran_summary <-
+  cran_df %>%
+  summarise(
+    min_count = min(count, na.rm = TRUE),
+    max_count = max(count, na.rm = TRUE),
+    mean_count = mean(count, na.rm = TRUE),
+    max_date = max(date, na.rm = TRUE)
+  )
+```
+
+CRAN Download Stats
+=======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Graph
+
+```{r}
+cran_df %>%
+  ggplot(aes(x = date, y = count)) +
+  geom_line(size = 1, colour = "grey") +
+  # average line --------------------------------------------------
+  geom_hline(yintercept = mean(cran_df$count),
+             colour = "red",
+             linetype = 2) + # Average line
+  geom_text(
+    data = cran_summary,
+    aes(y = mean_count,
+        x = max_date,
+        label = paste("Daily average:", round(mean_count, 1))),
+    vjust = 1.2,
+    hjust = 0.8,
+    size = 3,
+    colour = "red") +
+  # max line -------------------------------------------------------
+  geom_hline(yintercept = cran_summary$max_count,
+             colour = "grey20",
+             linetype = 2) + # Average line
+  geom_text(
+    data = cran_summary,
+    aes(y = max_count,
+        x = max_date,
+        label = paste("Daily max:", max_count)),
+    vjust = 1.2,
+    hjust = 0.8,
+    size = 3,
+    colour = "grey20") +
+  
+  labs(
+    title = paste0(pkgname, ": CRAN Package Downloads over the past 30 days"),
+    subtitle = paste("From", min(cran_df$date),
+                     "to", max(cran_df$date)),
+    y = "Downloads",
+    x = "Date"
+  )
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Table
+
+```{r}
+DT::datatable(cran_df,
+             extensions = c('Buttons',
+                            'FixedColumns'),
+             options = list(dom = 'Blfrtip',
+                            fixedColumns = list(leftColumns = 2),
+                            scrollX = TRUE,
+                            buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                            lengthMenu = list(c(-1, 10,25,50),
+                                              c("All", 10,25,50))))
+```
+
+Function Summary
+=======================================================================
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Table
+
+```{r}
+fs_df <- generate_summary(package_name = pkgname)
+
+DT::datatable(fs_df,
+             extensions = c('Buttons',
+                            'FixedColumns'),
+             options = list(dom = 'Blfrtip',
+                            fixedColumns = list(leftColumns = 2),
+                            scrollX = TRUE,
+                            buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                            lengthMenu = list(c(-1, 10,25,50),
+                                              c("All", 10,25,50))))
+```
+
