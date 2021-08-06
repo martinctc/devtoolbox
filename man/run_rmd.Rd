@@ -9,7 +9,7 @@ run_rmd(
   output_file = "report.html",
   output_dir = getwd(),
   report_title = "Report",
-  rmd_dir = system.file("rmd_template/minimal.rmd", package = "wpa"),
+  rmd_dir = system.file("rmd_template/minimal.rmd", package = "devtoolbox"),
   ...
 )
 }
@@ -40,3 +40,9 @@ document based on an RMarkdown template. This function is taken from the
 The implementation of this function was inspired by the 'DataExplorer'
 package by boxuancui, with credits due to the original author.
 }
+\section{Running the report}{
+
+You can run the minimal report and pass arguments directly to \code{run_rmd}:\if{html}{\out{<div class="R">}}\preformatted{run_rmd(pkgname = "devtoolbox")
+}\if{html}{\out{</div>}}
+}
+

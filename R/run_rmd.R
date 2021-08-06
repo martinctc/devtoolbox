@@ -20,14 +20,20 @@
 #'   RMarkdown template files.
 #' @param \dots other arguments to be passed to `params`. For instance, pass
 #'   `hrvar` if the RMarkdown document requires a 'hrvar' parameter.
+#'
+#' @section Running the report:
+#' You can run the minimal report and pass arguments directly to `run_rmd`:
+#' ```R
+#' run_rmd(pkgname = "devtoolbox")
+#' ```
+#'
 #' @export
-
 run_rmd <- function(
   output_format = rmarkdown::html_document(toc = TRUE, toc_depth = 6, theme = "cosmo"),
   output_file = "report.html",
   output_dir = getwd(),
   report_title = "Report",
-  rmd_dir = system.file("rmd_template/minimal.rmd", package = "wpa"),
+  rmd_dir = system.file("rmd_template/minimal.rmd", package = "devtoolbox"),
   ...
   ) {
 
