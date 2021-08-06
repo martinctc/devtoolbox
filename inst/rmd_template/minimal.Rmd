@@ -1,0 +1,19 @@
+---
+params:
+  pkgname: pkgname
+  set_title: report_title
+title: "`r params$set_title`"  
+---
+
+# Minimal Report
+
+This is a minimal report that shows basic diagnostic information about the dataset. This report is designed for testing purposes only.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(devtoolbox)
+
+## Get user data
+pkgname <- params$pkgname
+
+generate_summary(package_name = pkgname)
+```
