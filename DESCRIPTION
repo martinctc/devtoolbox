@@ -24,7 +24,8 @@ Imports:
     reshape2,
     ggplot2,
     markdown,
-    rmarkdown
+    rmarkdown,
+    stringr
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
