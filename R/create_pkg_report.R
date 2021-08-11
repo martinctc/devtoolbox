@@ -6,10 +6,31 @@
 #' @param pkgname String containing the name of the package.
 #' @param path Pass the file path and the desired file name, _excluding the file
 #'   extension_. For example, `"my package report"`.
+#' @param from String in the format of `YYYY-MM-DD` specifying the start date of
+#'   the reporting period. If set to `NULL`, the first day of the month of the
+#'   system date will be used.
+#' @param to String in the format of `YYYY-MM-DD` specifying the end date of the
+#'   reporting period. If set to `NULL`, the last day of the month of the system
+#'   date will be used.
 #'
 #' @export
 create_pkg_report <- function(pkgname,
+                              from = NULL,
+                              to = NULL,
                               path = paste(pkgname, "- summary report")){
+
+  # dependencies required in running report
+  check_pkg_installed(pkgname = "visNetwork")
+  check_pkg_installed(pkgname = "pkgnet")
+
+
+  if(is.null(from)){
+    from <- lubridate::floor_date(x = Sys.Date(), unit = "month")
+  }
+
+  if(is.null(to)){
+    to <- lubridate::ceiling_date(x = Sys.Date(), unit = "month") - 1
+  }
 
   run_rmd(
     pkgname = pkgname,
@@ -19,7 +40,10 @@ create_pkg_report <- function(pkgname,
     output_format =
       flexdashboard::flex_dashboard(orientation = "columns",
                                     vertical_layout = "fill",
-                                    source_code = "embed")
+                                    source_code = "embed"),
+    # Additional arguments
+    from = from,
+    to = to
   )
 
 }

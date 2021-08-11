@@ -4,10 +4,23 @@
 \alias{create_pkg_report}
 \title{Generate a package report in HTML}
 \usage{
-create_pkg_report(pkgname, path = paste(pkgname, "- summary report"))
+create_pkg_report(
+  pkgname,
+  from = NULL,
+  to = NULL,
+  path = paste(pkgname, "- summary report")
+)
 }
 \arguments{
 \item{pkgname}{String containing the name of the package.}
+
+\item{from}{String in the format of \code{YYYY-MM-DD} specifying the start date of
+the reporting period. If set to \code{NULL}, the first day of the month of the
+system date will be used.}
+
+\item{to}{String in the format of \code{YYYY-MM-DD} specifying the end date of the
+reporting period. If set to \code{NULL}, the last day of the month of the system
+date will be used.}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
 extension}. For example, \code{"my package report"}.}
