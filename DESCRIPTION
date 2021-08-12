@@ -26,7 +26,8 @@ Imports:
     markdown,
     rmarkdown,
     stringr,
-    DT
+    DT,
+    gh
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
