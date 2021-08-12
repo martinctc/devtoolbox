@@ -17,7 +17,9 @@
 #' @import purrr
 #'
 #' @examples
+#' \donttest{
 #' get_gh_pr(owner = "martinctc", repo = "rwa")
+#' }
 #'
 #' @export
 get_gh_pr <- function(owner, repo, start_date = NULL, end_date = NULL){
