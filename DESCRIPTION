@@ -25,7 +25,14 @@ Imports:
     ggplot2,
     markdown,
     rmarkdown,
-    stringr
+    stringr,
+    DT,
+    gh,
+    htmltools,
+    jsonlite,
+    lubridate,
+    flexdashboard,
+    httr
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
