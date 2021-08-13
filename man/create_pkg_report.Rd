@@ -8,7 +8,8 @@ create_pkg_report(
   pkgname,
   from = NULL,
   to = NULL,
-  path = paste(pkgname, "- summary report")
+  path = paste(pkgname, "- summary report"),
+  gh = NULL
 )
 }
 \arguments{
@@ -24,6 +25,10 @@ date will be used.}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
 extension}. For example, \code{"my package report"}.}
+
+\item{gh}{String in the format of \code{owner/repo} to specify the GitHub
+repository that holds the package. Defaults to \code{NULL} by default, where
+GitHub statistics will be omitted.}
 }
 \description{
 Create a report in HTML

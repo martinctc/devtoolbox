@@ -12,12 +12,16 @@
 #' @param to String in the format of `YYYY-MM-DD` specifying the end date of the
 #'   reporting period. If set to `NULL`, the last day of the month of the system
 #'   date will be used.
+#' @param gh String in the format of `owner/repo` to specify the GitHub
+#'   repository that holds the package. Defaults to `NULL` by default, where
+#'   GitHub statistics will be omitted.
 #'
 #' @export
 create_pkg_report <- function(pkgname,
                               from = NULL,
                               to = NULL,
-                              path = paste(pkgname, "- summary report")){
+                              path = paste(pkgname, "- summary report"),
+                              gh = NULL){
 
   # dependencies required in running report
   check_pkg_installed(pkgname = "visNetwork")
@@ -43,7 +47,7 @@ create_pkg_report <- function(pkgname,
                                     source_code = "embed"),
     # Additional arguments
     from = from,
-    to = to
+    to = to,
+    gh = gh
   )
-
 }
