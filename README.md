@@ -1,8 +1,8 @@
 # devtoolbox
 Tools for the R developer
 
-[![R build status](https://github.com/martinctc/devtoolbox/workflows/R-CMD-check/badge.svg)](https://github.com/martinctc/devtoolbox/actions)
-[![CodeFactor](https://www.codefactor.io/repository/github/martinctc/devtoolbox/badge)](https://www.codefactor.io/repository/github/martinctc/devtoolbox)
+[![R build status](https://github.com/martinctc/devtoolbox/workflows/R-CMD-check/badge.svg)](https://github.com/martinctc/devtoolbox/actions/)
+[![CodeFactor](https://www.codefactor.io/repository/github/martinctc/devtoolbox/badge)](https://www.codefactor.io/repository/github/martinctc/devtoolbox/)
 
 ## About
 
@@ -38,6 +38,6 @@ devtools::install_github("martinctc/devtoolbox")
 
 ### Contact
 
-Please feel free to submit suggestions and report bugs: <https://github.com/martinctc/surveytoolbox/issues>
+Please feel free to submit suggestions and report bugs: <https://github.com/martinctc/surveytoolbox/issues/>
 
 Also check out my [website](https://martinctc.github.io) for my other work and packages.
