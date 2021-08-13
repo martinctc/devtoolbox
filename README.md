@@ -23,4 +23,11 @@ You can install the latest development version from GitHub with:
 install.packages("devtools")
 devtools::install_github("martinctc/devtoolbox")
 ```
+
 ---
+
+### Contact
+
+Please feel free to submit suggestions and report bugs: <https://github.com/martinctc/surveytoolbox/issues>
+
+Also check out my [website](https://martinctc.github.io) for my other work and packages.
