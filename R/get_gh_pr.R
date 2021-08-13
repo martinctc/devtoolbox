@@ -1,6 +1,6 @@
 #' @title Get pull request information from GitHub for the given time period.
 #'
-#' @description Get information on pull request from the specified GitHub
+#' @description Get information on pull requests from the specified GitHub
 #'   repository. This is a wrapper around the 'gh' package. Original code taken
 #'   from <https://github.com/jennybc/analyze-github-stuff-with-r/>.
 #'
@@ -27,12 +27,6 @@ get_gh_pr <- function(owner, repo, start_date = NULL, end_date = NULL){
   pr_list <-
     gh("/repos/:owner/:repo/pulls", owner = owner, repo = repo,
        state = "all", .limit = Inf)
-
-  map_chr_hack <- function(.x, .f, ...) {
-    map(.x, .f, ...) %>%
-      map_if(is.null, ~ NA_character_) %>%
-      flatten_chr()
-  }
 
   pr_df <- pr_list %>%
     {
@@ -69,4 +63,10 @@ get_gh_pr <- function(owner, repo, start_date = NULL, end_date = NULL){
     pr_df
 
   }
+}
+
+map_chr_hack <- function(.x, .f, ...) {
+  map(.x, .f, ...) %>%
+    map_if(is.null, ~ NA_character_) %>%
+    flatten_chr()
 }

@@ -20,7 +20,7 @@ in the format \code{YYYY-MM-DD}. \code{NULL} by default, where no filters will b
 applied.}
 }
 \description{
-Get information on pull request from the specified GitHub
+Get information on pull requests from the specified GitHub
 repository. This is a wrapper around the 'gh' package. Original code taken
 from \url{https://github.com/jennybc/analyze-github-stuff-with-r/}.
 }
