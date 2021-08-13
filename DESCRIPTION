@@ -32,7 +32,8 @@ Imports:
     jsonlite,
     lubridate,
     flexdashboard,
-    httr
+    httr,
+	ggiraph
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
