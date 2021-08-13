@@ -1,11 +1,11 @@
 Package: devtoolbox
 Type: Package
 Title: Tools for the R developer
-Version: 0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martinchan53@gmail.com")
 	)
-Description: Tools for the R developer to evaluate and understand their packages in terms of complexity, structure, and performance.
+Description: Reporting tools for the R developer to evaluate their packages in terms of complexity, usage, and performance. Developers can generate an HTML report that displays CRAN downloads, number of open GitHub issues and pull requests, package dependencies, and so on, with each component of the report available as independent functions. 
 URL: https://github.com/martinctc/devtoolbox/
 BugReports: https://github.com/martinctc/devtoolbox/issues/
 License: MIT + file LICENSE
@@ -32,7 +32,8 @@ Imports:
     jsonlite,
     lubridate,
     flexdashboard,
-    httr
+    httr,
+	ggiraph
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
