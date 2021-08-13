@@ -27,7 +27,12 @@ Imports:
     rmarkdown,
     stringr,
     DT,
-    gh
+    gh,
+    htmltools,
+    jsonlite,
+    lubridate,
+    flexdashboard,
+    httr
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr

@@ -13,6 +13,10 @@ check_pkg_installed <- function(pkgname) {
 
   mtry <- try(find.package(package = pkgname))
 
+  wrap <- function(string, wrapper = '"'){
+    paste0(wrapper, string, wrapper)
+  }
+
   if (inherits(mtry, "try-error")) {
     stop(
       paste0(

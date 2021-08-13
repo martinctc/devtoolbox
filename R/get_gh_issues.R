@@ -15,6 +15,7 @@
 #'
 #' @import gh
 #' @import purrr
+#' @import dplyr
 #'
 #' @examples
 #' \donttest{
