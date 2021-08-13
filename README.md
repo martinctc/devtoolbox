@@ -15,6 +15,13 @@ Note that some features are only available if your package is a CRAN listed pack
 
 {devtoolbox} makes use of {cranlogs} and is heavily inspired {pkgnet}.
 
+### Examples
+
+See the following example reports:
+- [sjlabelled](https://martinctc.github.io/devtoolbox/examples/sjlabelled_summary_report.html)
+- [tidytext](https://martinctc.github.io/devtoolbox/examples/tidytext_summary_report.html)
+- [wpa](https://martinctc.github.io/devtoolbox/examples/wpa_summary_report.html)
+
 ---
 
 ### Installation
