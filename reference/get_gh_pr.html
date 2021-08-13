@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run a summary of functions and the associated description for a loaded
-package — generate_summary • devtoolbox</title>
+<title>Get pull request information from GitHub for the given time period. — get_gh_pr • devtoolbox</title>
 
 
 <!-- jquery -->
@@ -40,10 +39,10 @@ package — generate_summary • devtoolbox</title>
 
 
 
-<meta property="og:title" content="Run a summary of functions and the associated description for a loaded
-package — generate_summary" />
-<meta property="og:description" content="Return a data frame summarising functions, family, title,
-description, and arguments of a loaded package." />
+<meta property="og:title" content="Get pull request information from GitHub for the given time period. — get_gh_pr" />
+<meta property="og:description" content="Get information on pull requests from the specified GitHub
+repository. This is a wrapper around the 'gh' package. Original code taken
+from https://github.com/jennybc/analyze-github-stuff-with-r/." />
 
 
 
@@ -114,46 +113,60 @@ description, and arguments of a loaded package." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Run a summary of functions and the associated description for a loaded
-package</h1>
-    <small class="dont-index">Source: <a href='https://github.com/martinctc/devtoolbox/blob/master/R/generate_summary.R'><code>R/generate_summary.R</code></a></small>
-    <div class="hidden name"><code>generate_summary.Rd</code></div>
+    <h1>Get pull request information from GitHub for the given time period.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/martinctc/devtoolbox/blob/master/R/get_gh_pr.R'><code>R/get_gh_pr.R</code></a></small>
+    <div class="hidden name"><code>get_gh_pr.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return a data frame summarising functions, family, title,
-description, and arguments of a loaded package.</p>
+    <p>Get information on pull requests from the specified GitHub
+repository. This is a wrapper around the 'gh' package. Original code taken
+from <a href='https://github.com/jennybc/analyze-github-stuff-with-r/'>https://github.com/jennybc/analyze-github-stuff-with-r/</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>generate_summary</span><span class='op'>(</span><span class='va'>package_name</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_gh_pr</span><span class='op'>(</span><span class='va'>owner</span>, <span class='va'>repo</span>, start_date <span class='op'>=</span> <span class='cn'>NULL</span>, end_date <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>package_name</th>
-      <td><p>String providing the name of the loaded package, e.g. surveytoolbox</p></td>
+      <th>owner</th>
+      <td><p>String specifying the owner of the repository.</p></td>
+    </tr>
+    <tr>
+      <th>repo</th>
+      <td><p>String specifying the name of the repo.</p></td>
+    </tr>
+    <tr>
+      <th>start_date</th>
+      <td><p>String specifying start date of reporting period to filter
+by, in the format <code>YYYY-MM-DD</code>. <code>NULL</code> by default, where no filters will be
+applied.</p></td>
+    </tr>
+    <tr>
+      <th>end_date</th>
+      <td><p>String specifying end date of reporting period to filter by,
+in the format <code>YYYY-MM-DD</code>. <code>NULL</code> by default, where no filters will be
+applied.</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/martinctc/devtoolbox/'>devtoolbox</a></span><span class='op'>)</span>
-<span class='fu'>generate_summary</span><span class='op'>(</span>package_name <span class='op'>=</span> <span class='st'>"devtoolbox"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 × 5</span>
-#&gt;    Functions              Family Title         Description        Arguments     
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         
-#&gt; <span style='color: #BCBCBC;'> 1</span> %&gt;%                    <span style='color: #949494;'>""</span>     Pipe operator <span style='color: #949494;'>"</span>See list(\"magri… <span style='color: #949494;'>"</span>lhs; rhs<span style='color: #949494;'>"</span>    
-#&gt; <span style='color: #BCBCBC;'> 2</span> create_pkg_report      <span style='color: #949494;'>""</span>     Generate a p… <span style='color: #949494;'>"</span>Create a report … <span style='color: #949494;'>"</span>pkgname; fro…
-#&gt; <span style='color: #BCBCBC;'> 3</span> extract_argument       <span style='color: #949494;'>""</span>     Extract the … <span style='color: #949494;'>"</span>Returns a charac… <span style='color: #949494;'>"</span>fncname; pac…
-#&gt; <span style='color: #BCBCBC;'> 4</span> extract_desc           <span style='color: #949494;'>""</span>     Extract the … <span style='color: #949494;'>"</span>Returns a charac… <span style='color: #949494;'>"</span>fncname; pac…
-#&gt; <span style='color: #BCBCBC;'> 5</span> extract_family         <span style='color: #949494;'>""</span>     Extract the … <span style='color: #949494;'>"</span>Returns a charac… <span style='color: #949494;'>"</span>fncname; pac…
-#&gt; <span style='color: #BCBCBC;'> 6</span> extract_title          <span style='color: #949494;'>""</span>     Extract the … <span style='color: #949494;'>"</span>Returns a charac… <span style='color: #949494;'>"</span>fncname; pac…
-#&gt; <span style='color: #BCBCBC;'> 7</span> generate_summary       <span style='color: #949494;'>""</span>     Run a summar… <span style='color: #949494;'>"</span>Return a data fr… <span style='color: #949494;'>"</span>packagename<span style='color: #949494;'>"</span> 
-#&gt; <span style='color: #BCBCBC;'> 8</span> get_gh_issues          <span style='color: #949494;'>""</span>     Get issues i… <span style='color: #949494;'>"</span>Get information … <span style='color: #949494;'>"</span>owner; repo;…
-#&gt; <span style='color: #BCBCBC;'> 9</span> get_gh_pr              <span style='color: #949494;'>""</span>     Get pull req… <span style='color: #949494;'>"</span>Get information … <span style='color: #949494;'>"</span>owner; repo;…
-#&gt; <span style='color: #BCBCBC;'>10</span> recursive_dependencies <span style='color: #949494;'>""</span>     Compute recu… <span style='color: #949494;'>"</span>Compute recursiv… <span style='color: #949494;'>"</span>package; db;…
-#&gt; <span style='color: #BCBCBC;'>11</span> run_rmd                <span style='color: #949494;'>""</span>     Run RMarkdow… <span style='color: #949494;'>"</span>This is a suppor… <span style='color: #949494;'>"</span>outputformat…</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>get_gh_pr</span><span class='op'>(</span>owner <span class='op'>=</span> <span class='st'>"martinctc"</span>, repo <span class='op'>=</span> <span class='st'>"rwa"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 16</span>
+#&gt;   number        id title      state  user  commits_url    diff_url   patch_url  
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
+#&gt; <span style='color: #BCBCBC;'>1</span>      7 581<span style='text-decoration: underline;'>407</span>125 Feature: … open   mart… https://api.g… https://g… https://gi…
+#&gt; <span style='color: #BCBCBC;'>2</span>      6 567<span style='text-decoration: underline;'>945</span>645 Feature: … open   mart… https://api.g… https://g… https://gi…
+#&gt; <span style='color: #BCBCBC;'>3</span>      5 525<span style='text-decoration: underline;'>191</span>382 Patch/cra… closed mart… https://api.g… https://g… https://gi…
+#&gt; <span style='color: #BCBCBC;'>4</span>      4 515<span style='text-decoration: underline;'>722</span>962 Patch: Mi… closed mart… https://api.g… https://g… https://gi…
+#&gt; <span style='color: #BCBCBC;'>5</span>      2 497<span style='text-decoration: underline;'>457</span>153 Release/0… closed mart… https://api.g… https://g… https://gi…
+#&gt; <span style='color: #949494;'># … with 8 more variables: merge_commit_sha &lt;chr&gt;, pr_HEAD_label &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   pr_HEAD_sha &lt;chr&gt;, pr_base_label &lt;chr&gt;, pr_base_sha &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   created_at &lt;date&gt;, closed_at &lt;date&gt;, merged_at &lt;date&gt;</span></div><div class='input'><span class='co'># }</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

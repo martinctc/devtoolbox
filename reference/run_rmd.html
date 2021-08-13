@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • devtoolbox</title>
+<title>Run RMarkdown Report based on an existing RMarkdown file — run_rmd • devtoolbox</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Run RMarkdown Report based on an existing RMarkdown file — run_rmd" />
+<meta property="og:description" content="This is a support function that accepts parameters and creates a HTML
+document based on an RMarkdown template. This function is taken from the
+generate_report2() function from the 'wpa' package." />
 
 
 
@@ -58,7 +61,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -108,103 +111,74 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Run RMarkdown Report based on an existing RMarkdown file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/martinctc/devtoolbox/blob/master/R/run_rmd.R'><code>R/run_rmd.R</code></a></small>
+    <div class="hidden name"><code>run_rmd.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This is a support function that accepts parameters and creates a HTML
+document based on an RMarkdown template. This function is taken from the
+<code>generate_report2()</code> function from the 'wpa' package.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>run_rmd</span><span class='op'>(</span>
+  output_format <span class='op'>=</span> <span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/html_document.html'>html_document</a></span><span class='op'>(</span>toc <span class='op'>=</span> <span class='cn'>TRUE</span>, toc_depth <span class='op'>=</span> <span class='fl'>6</span>, theme <span class='op'>=</span> <span class='st'>"cosmo"</span><span class='op'>)</span>,
+  output_file <span class='op'>=</span> <span class='st'>"report.html"</span>,
+  output_dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>,
+  report_title <span class='op'>=</span> <span class='st'>"Report"</span>,
+  rmd_dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"rmd_template/minimal.rmd"</span>, package <span class='op'>=</span> <span class='st'>"devtoolbox"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="create_pkg_report.html">create_pkg_report()</a></code> </p>
-        </td>
-        <td><p>Generate a package report in HTML</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="extract_argument.html">extract_argument()</a></code> </p>
-        </td>
-        <td><p>Extract the arguments of a function for a loaded package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="extract_desc.html">extract_desc()</a></code> </p>
-        </td>
-        <td><p>Extract the description of a function for a loaded package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="extract_family.html">extract_family()</a></code> </p>
-        </td>
-        <td><p>Extract the family of a function for a loaded package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="extract_title.html">extract_title()</a></code> </p>
-        </td>
-        <td><p>Extract the title of a function for a loaded package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="generate_summary.html">generate_summary()</a></code> </p>
-        </td>
-        <td><p>Run a summary of functions and the associated description for a loaded
-package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_gh_issues.html">get_gh_issues()</a></code> </p>
-        </td>
-        <td><p>Get issues information from GitHub for the given time period.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_gh_pr.html">get_gh_pr()</a></code> </p>
-        </td>
-        <td><p>Get pull request information from GitHub for the given time period.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_help_file.html">get_help_file()</a></code> </p>
-        </td>
-        <td><p>Extract help file function based on 'utils:::.getHelpFile'</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="recursive_dependencies.html">recursive_dependencies()</a></code> </p>
-        </td>
-        <td><p>Compute recursive dependencies of packages</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="run_rmd.html">run_rmd()</a></code> </p>
-        </td>
-        <td><p>Run RMarkdown Report based on an existing RMarkdown file</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>output_format</th>
+      <td><p>output format in <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/render.html'>rmarkdown::render()</a></code>. Default is
+<code><a href='https://pkgs.rstudio.com/rmarkdown/reference/html_document.html'>rmarkdown::html_document(toc = TRUE, toc_depth = 6, theme = "cosmo")</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>output_file</th>
+      <td><p>output file name in <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/render.html'>rmarkdown::render()</a></code>. Default is
+<code>"report.html"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>output_dir</th>
+      <td><p>output directory for report in <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/render.html'>rmarkdown::render()</a></code>.
+Default is user's current directory.</p></td>
+    </tr>
+    <tr>
+      <th>report_title</th>
+      <td><p>report title. Default is <code>"Report"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>rmd_dir</th>
+      <td><p>string specifying the path to the directory containing the
+RMarkdown template files.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>other arguments to be passed to <code>params</code>. For instance, pass
+<code>hrvar</code> if the RMarkdown document requires a 'hrvar' parameter.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>The implementation of this function was inspired by the 'DataExplorer'
+package by boxuancui, with credits due to the original author.</p>
+    <h2 class="hasAnchor" id="running-the-report"><a class="anchor" href="#running-the-report"></a>Running the report</h2>
+
+    
+
+<p>You can run the minimal report and pass arguments directly to <code>run_rmd</code>:<div class="R"></p><pre><span class='fu'>run_rmd</span><span class='op'>(</span>pkgname <span class='op'>=</span> <span class='st'>"devtoolbox"</span><span class='op'>)</span>
+</pre><p></div></p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
