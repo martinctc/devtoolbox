@@ -1,0 +1,22 @@
+template:
+  params:
+    bootswatch: cosmo
+  path: "inst/pkgdown"
+
+navbar:
+  structure:
+    left:
+    - home
+    - reference
+    right: github
+
+  components:
+    home:
+      icon: fas fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/martinctc/devtoolbox
