@@ -9,6 +9,7 @@ params:
   set_title: report_title
   from: from
   to: to
+  gh: gh
 title: "`r params$set_title`"      
 ---
 
@@ -21,6 +22,7 @@ library(flexdashboard)
 pkgname <- params$pkgname
 from_date <- params$from
 to_date <- params$to
+gh <- params$gh
 
 library(cranlogs)
 library(dplyr)
@@ -64,6 +66,47 @@ fnc_str <-
 
 # package dependencies
 pkg_deps <- recursive_dependencies(package = pkgname, db = NULL)
+
+# github owner/repository
+gh_owner <- gsub(pattern = "/.+", replacement = "", x = gh)
+gh_repos <- gsub(pattern = ".+/", replacement = "", x = gh)
+
+# Open pull requests
+
+if(is.null(gh)){
+  
+  gh_opr <- "N/A"
+  
+} else {
+  
+  gh_pr_df <- get_gh_pr(
+    owner = gh_owner,
+    repo = gh_repos
+    )
+  
+  gh_opr <- gh_pr_df %>%
+    filter(state == "open") %>%
+    nrow()
+}
+
+
+# Open issues
+
+if(is.null(gh)){
+  
+  gh_ois <- "N/A"
+  
+} else {
+  
+  gh_iss_df <- get_gh_issues(
+    owner = gh_owner,
+    repo = gh_repos
+    ) 
+  
+  gh_ois <- gh_iss_df %>%
+    filter(state == "open") %>%
+    nrow()
+}
 ```
 
 Package description {data-orientation=rows}
@@ -118,9 +161,28 @@ pkg_deps %>%
   length() %>%
   flexdashboard::valueBox(
     caption = "Package dependencies",
-    color = "info"
+    color = "warning"
   )
 ```
+
+### KPI - 5
+```{r}
+gh_opr %>%
+  flexdashboard::valueBox(
+    caption = "Open pull requests",
+    color = "danger"
+  )
+```  
+
+### KPI - 6
+
+```{r}
+gh_ois %>%
+  flexdashboard::valueBox(
+    caption = "Open issues",
+    color = "#224e87"
+  )
+```  
 
 Row
 -----------------------------------------------------------------------
@@ -129,7 +191,7 @@ Row
 
 ```{r}
 # Package description
-desc <- utils::packageDescription(pkg = "wpa")
+desc <- utils::packageDescription(pkg = pkgname)
 
 dplyr::tibble(
   Field = names(desc),
@@ -138,7 +200,7 @@ dplyr::tibble(
   DT::datatable(
     extensions = c('Buttons',
                    'FixedColumns'),
-             options = list(dom = 'Blfrtip',
+             options = list(dom = 'lfrtip',
                             fixedColumns = list(leftColumns = 2),
                             scrollX = TRUE,
                             lengthMenu = list(c(-1, 10,25,50),
@@ -157,8 +219,8 @@ Column {data-width=650}
 cran_g <-
   cran_df %>%
   ggplot(aes(x = date, y = count)) +
-  geom_line_interactive(size = 1, colour = "grey") +
-  geom_point_interactive(aes(tooltip = count)) +
+  geom_line_interactive(size = 1, colour = "#224e87") +
+  geom_point_interactive(aes(tooltip = count), colour = "#224e87") +
   
   # average line --------------------------------------------------
   geom_hline_interactive(yintercept = mean(cran_df$count),
@@ -276,6 +338,8 @@ nodes <- data.table::data.table(
 )
 ```
 
+### Package dependencies
+
 ```{r}
 nodes_df <-
   nodes %>%
@@ -290,3 +354,135 @@ edges_df <-
 visNetwork::visNetwork(nodes_df, edges_df, width = "100%") %>%
   visNetwork::visEdges(arrows = "from")
 ```
+
+Pull Requests
+=======================================================================
+
+Column {data-width=200}
+-----------------------------------------------------------------------
+
+### About
+
+The table shows the pull requests that have been created, closed, or merged
+during the reporting period.
+
+
+Column {data-width=800}
+-----------------------------------------------------------------------
+
+### Active pull requests
+
+```{r}
+if(is.null(gh)){
+  
+  gh_out <- md2html("Data unavailable as no GitHub repository is provided/available.")
+  
+} else {
+  
+  gh_out <- gh_pr_df %>%
+      select(
+        number,
+        title,
+        state,
+        user,
+        created_at,
+        closed_at,
+        merged_at
+        ) %>%
+    filter(between(
+      created_at,
+      as.Date(from_date, "%Y-%m-%d"),
+      as.Date(to_date, "%Y-%m-%d")
+    ) |
+      between(
+        closed_at,
+        as.Date(from_date, "%Y-%m-%d"),
+        as.Date(to_date, "%Y-%m-%d")
+      ) |
+      between(
+        merged_at,
+        as.Date(from_date, "%Y-%m-%d"),
+        as.Date(to_date, "%Y-%m-%d")
+      )
+      )
+  
+  gh_out <-
+    DT::datatable(gh_out,
+             extensions = c('Buttons',
+                            'FixedColumns'),
+             options = list(dom = 'Blfrtip',
+                            fixedColumns = list(leftColumns = 2),
+                            scrollX = TRUE,
+                            buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                            lengthMenu = list(c(-1, 10,25,50),
+                                              c("All", 10,25,50))))
+    
+  
+}
+
+gh_out
+
+```
+
+Issues
+=======================================================================
+
+Column {data-width=200}
+-----------------------------------------------------------------------
+
+### About
+
+The table shows the issues that have been created or closed during the reporting
+period.
+
+
+Column {data-width=800}
+-----------------------------------------------------------------------
+
+### Active issues
+
+```{r}
+if(is.null(gh)){
+  
+  gh_out <- md2html("Data unavailable as no GitHub repository is provided/available.")
+  
+} else {
+  
+  gh_out <- gh_iss_df %>%
+      select(
+        number,
+        title,
+        state,
+        assignee = "user.login",
+        created_at,
+        closed_at
+        ) %>%
+    filter(between(
+      created_at,
+      as.Date(from_date, "%Y-%m-%d"),
+      as.Date(to_date, "%Y-%m-%d")
+    ) |
+      between(
+        closed_at,
+        as.Date(from_date, "%Y-%m-%d"),
+        as.Date(to_date, "%Y-%m-%d")
+      ))
+  
+  gh_out <-
+    DT::datatable(gh_out,
+             extensions = c('Buttons',
+                            'FixedColumns'),
+             options = list(dom = 'Blfrtip',
+                            fixedColumns = list(leftColumns = 2),
+                            scrollX = TRUE,
+                            buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                            lengthMenu = list(c(-1, 10,25,50),
+                                              c("All", 10,25,50))))
+    
+  
+}
+
+gh_out
+
+```
+
