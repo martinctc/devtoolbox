@@ -18,8 +18,7 @@
 #' @param report_title report title. Default is `"Report"`.
 #' @param rmd_dir string specifying the path to the directory containing the
 #'   RMarkdown template files.
-#' @param \dots other arguments to be passed to `params`. For instance, pass
-#'   `hrvar` if the RMarkdown document requires a 'hrvar' parameter.
+#' @param \dots other arguments to be passed to `params`.
 #'
 #' @section Running the report:
 #' You can run the minimal report and pass arguments directly to `run_rmd`:
