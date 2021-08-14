@@ -1,6 +1,6 @@
 Package: devtoolbox
 Type: Package
-Title: Tools for the R developer
+Title: Reporting and Evaluation Tools for the R Developer
 Version: 0.1.0
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martinchan53@gmail.com")
@@ -10,7 +10,6 @@ URL: https://github.com/martinctc/devtoolbox/
 BugReports: https://github.com/martinctc/devtoolbox/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Depends:
     R (>= 3.1.2)
 Imports: 
@@ -36,7 +35,6 @@ Imports:
 	ggiraph
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
-VignetteBuilder: knitr
 Suggests: 
     knitr,
     glue
