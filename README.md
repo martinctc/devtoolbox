@@ -1,5 +1,5 @@
 # devtoolbox
-Tools for the R developer
+Reporting and Evaluation Tools for the R Developer
 
 [![R build status](https://github.com/martinctc/devtoolbox/workflows/R-CMD-check/badge.svg)](https://github.com/martinctc/devtoolbox/actions/)
 [![CodeFactor](https://www.codefactor.io/repository/github/martinctc/devtoolbox/badge)](https://www.codefactor.io/repository/github/martinctc/devtoolbox/)
