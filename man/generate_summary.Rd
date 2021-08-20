@@ -10,6 +10,10 @@ generate_summary(package_name)
 \arguments{
 \item{package_name}{String providing the name of the loaded package, e.g. surveytoolbox}
 }
+\value{
+A data frame summarising functions, family, title, description, and
+arguments of a loaded package.
+}
 \description{
 Return a data frame summarising functions, family, title,
 description, and arguments of a loaded package.

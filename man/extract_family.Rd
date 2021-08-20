@@ -11,6 +11,10 @@ extract_family(fnc_name, package_name)
 
 \item{package_name}{String containing the name of the loaded package.}
 }
+\value{
+A character vector containing the family of a function for a loaded
+package.
+}
 \description{
 Returns a character vector containing the family of a
 function for a loaded package.

@@ -10,6 +10,9 @@
 #' library(devtoolbox)
 #' generate_summary(package_name = "devtoolbox")
 #'
+#' @return A data frame summarising functions, family, title, description, and
+#'   arguments of a loaded package.
+#'
 #' @export
 generate_summary <- function(package_name){
 
