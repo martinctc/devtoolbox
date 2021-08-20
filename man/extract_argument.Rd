@@ -11,6 +11,10 @@ extract_argument(fnc_name, package_name)
 
 \item{package_name}{String containing the name of the loaded package.}
 }
+\value{
+A character vector of length 1 containing the arguments of a function
+for a loaded package. Multiple arguments are separated by a semi-colon.
+}
 \description{
 Returns a character vector containing the arguments of a
 function for a loaded package. Arguments are separated by semi-colons.

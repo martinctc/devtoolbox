@@ -26,10 +26,14 @@ Default is user's current directory.}
 \item{report_title}{report title. Default is \code{"Report"}.}
 
 \item{rmd_dir}{string specifying the path to the directory containing the
-RMarkdown template files.}
+RMarkdown template files. This uses the internal \code{minimal} template by
+default.}
 
-\item{\dots}{other arguments to be passed to \code{params}. For instance, pass
-\code{hrvar} if the RMarkdown document requires a 'hrvar' parameter.}
+\item{\dots}{other arguments to be passed to \code{params}.}
+}
+\value{
+Opens and saves a static HTML report in the active directory, using the
+RMarkdown template as specified in the argument \code{rmd_dir}.
 }
 \description{
 This is a support function that accepts parameters and creates a HTML

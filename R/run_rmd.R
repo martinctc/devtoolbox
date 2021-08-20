@@ -17,8 +17,13 @@
 #'   Default is user's current directory.
 #' @param report_title report title. Default is `"Report"`.
 #' @param rmd_dir string specifying the path to the directory containing the
-#'   RMarkdown template files.
+#'   RMarkdown template files. This uses the internal `minimal` template by
+#'   default.
 #' @param \dots other arguments to be passed to `params`.
+#'
+#' @return
+#' Opens and saves a static HTML report in the active directory, using the
+#' RMarkdown template as specified in the argument `rmd_dir`.
 #'
 #' @section Running the report:
 #' You can run the minimal report and pass arguments directly to `run_rmd`:

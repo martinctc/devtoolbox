@@ -16,11 +16,20 @@
 #'   repository that holds the package. Defaults to `NULL` by default, where
 #'   GitHub statistics will be omitted.
 #'
+#' @return Opens and saves a static HTML file in the active working directory
+#'   with the file name specified in `path`.
+#'
 #' @export
 create_pkg_report <- function(pkgname,
                               from = NULL,
                               to = NULL,
-                              path = paste(pkgname, "- summary report"),
+                              path = paste0(
+                                pkgname,
+                                " - summary report",
+                                from,
+                                "_",
+                                to
+                                ),
                               gh = NULL){
 
   # dependencies required in running report
