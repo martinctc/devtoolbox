@@ -1,6 +1,6 @@
 Package: devtoolbox
 Type: Package
-Title: Tools for the R developer
+Title: Tools for the R Developer
 Version: 0.1.0
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martinchan53@gmail.com")
