@@ -10,7 +10,6 @@ URL: https://github.com/martinctc/devtoolbox/
 BugReports: https://github.com/martinctc/devtoolbox/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Depends:
     R (>= 3.1.2)
 Imports: 
