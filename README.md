@@ -3,6 +3,8 @@ Tools for the R developer
 
 [![R build status](https://github.com/martinctc/devtoolbox/workflows/R-CMD-check/badge.svg)](https://github.com/martinctc/devtoolbox/actions/)
 [![CodeFactor](https://www.codefactor.io/repository/github/martinctc/devtoolbox/badge)](https://www.codefactor.io/repository/github/martinctc/devtoolbox/)
+[![CRAN status](https://www.r-pkg.org/badges/version/devtoolbox)](https://CRAN.R-project.org/package=devtoolbox/)
+[![CRAN last month downloads](https://cranlogs.r-pkg.org/badges/last-month/devtoolbox?color=green/)](https://cran.r-project.org/package=devtoolbox/)
 
 ## About
 
