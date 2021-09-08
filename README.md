@@ -28,11 +28,14 @@ See the following example reports:
 
 ### Installation
 
-{devtoolbox} is not released on CRAN (yet). 
-You can install the latest development version from GitHub with:
+{devtoolbox} is now available on CRAN. You can install this with: 
+```R
+install.packages("devtoolbox")
+```
+
+You can also install the latest development version from GitHub with:
 
 ```R
-install.packages("devtools")
 devtools::install_github("martinctc/devtoolbox")
 ```
 
