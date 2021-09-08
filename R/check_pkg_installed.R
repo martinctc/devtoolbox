@@ -7,6 +7,9 @@
 #' @param pkgname String containing the name of the package to check whether is
 #' installed.
 #'
+#' @return If the installed package does not exist, an error message is returned
+#'   informing the user that it is the case.
+#'
 #' @noRd
 #'
 check_pkg_installed <- function(pkgname) {

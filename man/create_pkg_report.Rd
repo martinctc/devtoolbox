@@ -8,7 +8,7 @@ create_pkg_report(
   pkgname,
   from = NULL,
   to = NULL,
-  path = paste(pkgname, "- summary report"),
+  path = paste0(pkgname, " - summary report", from, "_", to),
   gh = NULL
 )
 }
@@ -29,6 +29,10 @@ extension}. For example, \code{"my package report"}.}
 \item{gh}{String in the format of \code{owner/repo} to specify the GitHub
 repository that holds the package. Defaults to \code{NULL} by default, where
 GitHub statistics will be omitted.}
+}
+\value{
+Opens and saves a static HTML file in the active working directory
+with the file name specified in \code{path}.
 }
 \description{
 Create a report in HTML

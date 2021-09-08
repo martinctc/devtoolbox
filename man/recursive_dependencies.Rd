@@ -13,6 +13,10 @@ recursive_dependencies(package, db, seen_packages = NULL)
 
 \item{seen_packages}{String containing names of packages to exclude}
 }
+\value{
+A character vector containing all the recursive package dependencies
+of the specified package.
+}
 \description{
 Compute recursive package dependencies of packages. Credits to 'pkgnet' for
 the original function.

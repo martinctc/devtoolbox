@@ -1,6 +1,8 @@
 #' @title Extract help file function based on 'utils:::.getHelpFile'
 #'
 #' @param file String containing name of file.
+#'
+#' @noRd
 
 get_help_file <- function(file){
   path <- dirname(file)

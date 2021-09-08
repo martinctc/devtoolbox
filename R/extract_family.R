@@ -11,6 +11,9 @@
 #'   fnc_name = "extract_family",
 #'   package_name = "devtoolbox")
 #'
+#' @return A character vector containing the family of a function for a loaded
+#'   package.
+#'
 #' @import utils
 #'
 #' @export

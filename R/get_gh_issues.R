@@ -17,6 +17,9 @@
 #' @import purrr
 #' @import dplyr
 #'
+#' @return A data frame containing details of GitHub issues identified in the
+#'   specified date range.
+#'
 #' @examples
 #' \donttest{
 #' get_gh_issues(owner = "martinctc", repo = "rwa")

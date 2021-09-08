@@ -16,6 +16,9 @@
 #' @import gh
 #' @import purrr
 #'
+#' @return A data frame containing details of GitHub pull requests identified in
+#'   the specified date range.
+#'
 #' @examples
 #' \donttest{
 #' get_gh_pr(owner = "martinctc", repo = "rwa")

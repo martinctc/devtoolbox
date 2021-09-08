@@ -19,6 +19,10 @@ applied.}
 in the format \code{YYYY-MM-DD}. \code{NULL} by default, where no filters will be
 applied.}
 }
+\value{
+A data frame containing details of GitHub pull requests identified in
+the specified date range.
+}
 \description{
 Get information on pull requests from the specified GitHub
 repository. This is a wrapper around the 'gh' package. Original code taken

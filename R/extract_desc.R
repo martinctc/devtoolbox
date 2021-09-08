@@ -11,6 +11,9 @@
 #'   fnc_name = "extract_desc",
 #'   package_name = "devtoolbox")
 #'
+#' @return A character vector containing the description of a function for a
+#'   loaded package.
+#'
 #' @import utils
 #'
 #' @export

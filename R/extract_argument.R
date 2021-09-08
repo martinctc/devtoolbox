@@ -11,6 +11,9 @@
 #'   fnc_name = "extract_argument",
 #'   package_name = "devtoolbox")
 #'
+#' @return A character vector of length 1 containing the arguments of a function
+#'   for a loaded package. Multiple arguments are separated by a semi-colon.
+#'
 #' @import utils
 #'
 #' @export

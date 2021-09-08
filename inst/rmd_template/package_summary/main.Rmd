@@ -122,7 +122,7 @@ cran_df %>%
   summarise(count = sum(count, na.rm = TRUE)) %>%
   pull(count) %>%
   flexdashboard::valueBox(
-    caption = "Monthly CRAN downloads",
+    caption = "Total CRAN downloads over period",
     color = "primary"
   )
 ```

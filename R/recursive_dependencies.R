@@ -8,6 +8,9 @@
 #' @param db Parameter to pass to 'tools::package_dependencies'
 #' @param seen_packages String containing names of packages to exclude
 #'
+#' @return A character vector containing all the recursive package dependencies
+#'   of the specified package.
+#'
 #' @export
 recursive_dependencies <- function(package, db, seen_packages = NULL) {
 
