@@ -124,7 +124,7 @@
   <span class='va'>pkgname</span>,
   from <span class='op'>=</span> <span class='cn'>NULL</span>,
   to <span class='op'>=</span> <span class='cn'>NULL</span>,
-  path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>pkgname</span>, <span class='st'>"- summary report"</span><span class='op'>)</span>,
+  path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>pkgname</span>, <span class='st'>" - summary report"</span>, <span class='va'>from</span>, <span class='st'>"_"</span>, <span class='va'>to</span><span class='op'>)</span>,
   gh <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
@@ -160,6 +160,10 @@ GitHub statistics will be omitted.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Opens and saves a static HTML file in the active working directory
+with the file name specified in <code>path</code>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

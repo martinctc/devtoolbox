@@ -158,15 +158,19 @@ Default is user's current directory.</p></td>
     <tr>
       <th>rmd_dir</th>
       <td><p>string specifying the path to the directory containing the
-RMarkdown template files.</p></td>
+RMarkdown template files. This uses the internal <code>minimal</code> template by
+default.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>other arguments to be passed to <code>params</code>. For instance, pass
-<code>hrvar</code> if the RMarkdown document requires a 'hrvar' parameter.</p></td>
+      <td><p>other arguments to be passed to <code>params</code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Opens and saves a static HTML report in the active directory, using the
+RMarkdown template as specified in the argument <code>rmd_dir</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>The implementation of this function was inspired by the 'DataExplorer'
