@@ -24,10 +24,10 @@ extract_family <- function(fnc_name, package_name){
     fnc_name %>%
     utils::help(eval(package_name))
 
+   # Function not available
   if(length(help_text) == 0){
 
-    # Function not available
-    out <- ""
+    return("")
 
   } else {
 
@@ -41,7 +41,7 @@ extract_family <- function(fnc_name, package_name){
 
     if(length(p) == 0){
 
-      out
+      return("")
 
     } else {
 
