@@ -32,8 +32,7 @@ extract_family <- function(fnc_name, package_name){
   } else {
 
     p <-
-      fnc_name %>%
-      utils::help(eval(package_name)) %>%
+      help_text %>%
       get_help_file() %>% # duplicate of utils:::.getHelpFile()
       purrr::keep(~attr(.x, "Rd_tag") == "\\seealso") %>%
       purrr::map(as.character) %>%
