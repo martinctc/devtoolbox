@@ -219,8 +219,9 @@ Column {data-width=650}
 cran_g <-
   cran_df %>%
   ggplot(aes(x = date, y = count)) +
-  geom_line_interactive(size = 1, colour = "#224e87") +
-  geom_point_interactive(aes(tooltip = count), colour = "#224e87") +
+  geom_line_interactive(size = 1, colour = "#224e87", alpha = 0.9) +
+  geom_point_interactive(aes(tooltip = count),
+                         colour = "#224e87", alpha = 0.9) +
   
   # average line --------------------------------------------------
   geom_hline_interactive(yintercept = mean(cran_df$count),
@@ -266,15 +267,17 @@ Column {data-width=350}
 ### Table
 
 ```{r}
-DT::datatable(cran_df,
-             extensions = c('Buttons',
-                            'FixedColumns'),
-             options = list(dom = 'Blfrtip',
-                            fixedColumns = list(leftColumns = 2),
-                            scrollX = TRUE,
-                            buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
-                            lengthMenu = list(c(-1, 10,25,50),
-                                              c("All", 10,25,50))))
+cran_df %>%
+  select(date, count) %>%
+  DT::datatable(
+    extensions = c('Buttons', 'FixedColumns'),
+    options = list(
+      dom = 'Blfrtip',
+      fixedColumns = list(leftColumns = 2),
+      scrollX = TRUE,
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+      lengthMenu = list(c(-1, 10,25,50),
+                        c("All", 10,25,50))))
 ```
 
 Function Summary
