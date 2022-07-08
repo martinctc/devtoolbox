@@ -1,0 +1,97 @@
+Package description {data-orientation=rows}
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+### KPI - 1
+
+```{r}
+cran_df %>%
+  summarise(count = sum(count, na.rm = TRUE)) %>%
+  pull(count) %>%
+  flexdashboard::valueBox(
+    caption = "Total CRAN downloads over period",
+    color = "primary"
+  )
+```
+
+### KPI - 2
+
+```{r}
+cran_df %>%
+  summarise(count = mean(count, na.rm = TRUE)) %>%
+  pull(count) %>%
+  round(digits = 1) %>%
+  flexdashboard::valueBox(
+    caption = "Daily CRAN downloads",
+    color = "success"
+  )
+```
+
+### KPI - 3
+
+```{r}
+fnc_str %>%
+  length() %>%
+  flexdashboard::valueBox(
+    caption = "Total number of functions",
+    color = "info"
+  )
+```
+
+Row
+-----------------------------------------------------------------------
+
+### KPI - 4
+
+```{r}
+pkg_deps %>%
+  length() %>%
+  flexdashboard::valueBox(
+    caption = "Package dependencies",
+    color = "warning"
+  )
+```
+
+### KPI - 5
+```{r}
+gh_opr %>%
+  flexdashboard::valueBox(
+    caption = "Open pull requests",
+    color = "danger"
+  )
+```
+
+### KPI - 6
+
+```{r}
+gh_ois %>%
+  flexdashboard::valueBox(
+    caption = "Open issues",
+    color = "#224e87"
+  )
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Summary
+
+```{r}
+# Package description
+desc <- utils::packageDescription(pkg = pkgname)
+
+dplyr::tibble(
+  Field = names(desc),
+  Values = unlist(desc)
+) %>%
+  DT::datatable(
+    extensions = c('Buttons',
+                   'FixedColumns'),
+    options = list(dom = 'lfrtip',
+                   fixedColumns = list(leftColumns = 2),
+                   scrollX = TRUE,
+                   lengthMenu = list(c(-1, 10,25,50),
+                                     c("All", 10,25,50))))
+```

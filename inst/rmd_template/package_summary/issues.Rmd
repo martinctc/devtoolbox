@@ -1,0 +1,61 @@
+Issues
+=======================================================================
+
+Column {data-width=200}
+-----------------------------------------------------------------------
+
+### About
+
+The table shows the issues that have been created or closed during the reporting
+period.
+
+
+Column {data-width=800}
+-----------------------------------------------------------------------
+
+### Active issues
+
+```{r}
+if(is.null(gh)){
+
+  gh_out <- md2html("Data unavailable as no GitHub repository is provided/available.")
+
+} else {
+
+  gh_out <- gh_iss_df %>%
+    select(
+      number,
+      title,
+      state,
+      assignee = "user.login",
+      created_at,
+      closed_at
+    ) %>%
+    filter(between(
+      created_at,
+      as.Date(from_date, "%Y-%m-%d"),
+      as.Date(to_date, "%Y-%m-%d")
+    ) |
+      between(
+        closed_at,
+        as.Date(from_date, "%Y-%m-%d"),
+        as.Date(to_date, "%Y-%m-%d")
+      ))
+
+  gh_out <-
+    DT::datatable(gh_out,
+                  extensions = c('Buttons',
+                                 'FixedColumns'),
+                  options = list(dom = 'Blfrtip',
+                                 fixedColumns = list(leftColumns = 2),
+                                 scrollX = TRUE,
+                                 buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                                 lengthMenu = list(c(-1, 10,25,50),
+                                                   c("All", 10,25,50))))
+
+
+}
+
+gh_out
+
+```

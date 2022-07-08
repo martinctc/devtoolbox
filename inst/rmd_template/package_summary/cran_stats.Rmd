@@ -1,0 +1,71 @@
+CRAN Download Stats
+=======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Graph
+```{r}
+cran_g <-
+  cran_df %>%
+  ggplot(aes(x = date, y = count)) +
+  geom_line_interactive(size = 1, colour = "#224e87", alpha = 0.9) +
+  geom_point_interactive(aes(tooltip = count),
+                         colour = "#224e87", alpha = 0.9) +
+
+  # average line --------------------------------------------------
+geom_hline_interactive(yintercept = mean(cran_df$count),
+                       colour = "red",
+                       linetype = 2) + # Average line
+  geom_text(
+    data = cran_summary,
+    aes(y = mean_count,
+        x = max_date,
+        label = paste("Daily average:", round(mean_count, 1))),
+    vjust = 1.2,
+    hjust = 0.8,
+    size = 3,
+    colour = "red") +
+  # max line -------------------------------------------------------
+geom_hline_interactive(yintercept = cran_summary$max_count,
+                       colour = "grey20",
+                       linetype = 2) + # Average line
+  geom_text(
+    data = cran_summary,
+    aes(y = max_count,
+        x = max_date,
+        label = paste("Daily max:", max_count)),
+    vjust = 1.2,
+    hjust = 0.8,
+    size = 3,
+    colour = "grey20") +
+  labs(
+    title = paste0(pkgname, ": CRAN Package Downloads over the past ",
+                   as.numeric(date_diff), " days"),
+    subtitle = paste("From", min(cran_df$date),
+                     "to", max(cran_df$date)),
+    y = "Downloads",
+    x = "Date"
+  )
+
+ggiraph::girafe(ggobj = cran_g)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Table
+
+```{r}
+cran_df %>%
+  select(date, count) %>%
+  DT::datatable(
+    extensions = c('Buttons', 'FixedColumns'),
+    options = list(
+      dom = 'Blfrtip',
+      fixedColumns = list(leftColumns = 2),
+      scrollX = TRUE,
+      buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+      lengthMenu = list(c(-1, 10,25,50),
+                        c("All", 10,25,50))))
+```
