@@ -1,7 +1,16 @@
 #' @title Generate a package report in HTML
 #'
 #' @description
-#' Create a report in HTML
+#' Create a package summary report in HTML
+#'
+#' @details
+#' The package summary report contains the following pages:
+#'   - usage and development KPIs and package description
+#'   - CRAN download stats
+#'   - Summary of functions
+#'   - Summary of package dependencies
+#'   - Summary of pull requests
+#'   - Summary of issues
 #'
 #' @param pkgname String containing the name of the package.
 #' @param path Pass the file path and the desired file name, _excluding the file
