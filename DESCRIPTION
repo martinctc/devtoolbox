@@ -34,7 +34,8 @@ Imports:
     httr,
     ggiraph,
     cranlogs,
-    visNetwork
+    visNetwork,
+    pkgnet
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
