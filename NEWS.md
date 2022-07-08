@@ -1,3 +1,7 @@
+# devtoolbox 0.2.0
+
+- Bugfixes
+
 # devtoolbox 0.1.0
 
 - Added new functions (`generate_summary()`) for summarising functions for a loaded package. (#2)

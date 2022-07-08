@@ -35,5 +35,16 @@ Opens and saves a static HTML file in the active working directory
 with the file name specified in \code{path}.
 }
 \description{
-Create a report in HTML
+Create a package summary report in HTML
+}
+\details{
+The package summary report contains the following pages:
+\itemize{
+\item usage and development KPIs and package description
+\item CRAN download stats
+\item Summary of functions
+\item Summary of package dependencies
+\item Summary of pull requests
+\item Summary of issues
+}
 }

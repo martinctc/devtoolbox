@@ -20,23 +20,38 @@
 
 extract_argument <- function(fnc_name, package_name){
 
-  fnc_name %>%
-    utils::help(eval(package_name)) %>%
-    get_help_file() %>% # duplicate of utils:::.getHelpFile()
-    purrr::keep(~attr(.x, "Rd_tag") == "\\arguments") %>%
-    purrr::map(as.character) %>%
-    purrr::flatten_chr() -> p
+  help_text <-
+    fnc_name %>%
+    utils::help(eval(package_name))
 
-  if(length(p) == 0){
+  # Function not available
+  if(length(help_text) == 0){
+
     return("")
+
   } else {
-    p %>%
-      stringr::str_remove_all(., "[\n]") %>%
-      .[. != ""] %>% # remove blanks
-      stringr::str_trim() %>%
-      stringr::str_remove_all("list\\(") %>% # clean up
-      stringr::str_remove_all(",.+") %>% # remove argument description
-      stringr::str_remove_all("[:punct:]") %>% # remove all non-words
-      paste(collapse = "; ")
+
+    fnc_name %>%
+      utils::help(eval(package_name)) %>%
+      get_help_file() %>% # duplicate of utils:::.getHelpFile()
+      purrr::keep(~attr(.x, "Rd_tag") == "\\arguments") %>%
+      purrr::map(as.character) %>%
+      purrr::flatten_chr() -> p
+
+    if(length(p) == 0){
+      return("")
+
+    } else {
+
+      p %>%
+        stringr::str_remove_all(., "[\n]") %>%
+        .[. != ""] %>% # remove blanks
+        stringr::str_trim() %>%
+        stringr::str_remove_all("list\\(") %>% # clean up
+        stringr::str_remove_all(",.+") %>% # remove argument description
+        stringr::str_remove_all("[:punct:]") %>% # remove all non-words
+        paste(collapse = "; ")
+    }
+
   }
 }

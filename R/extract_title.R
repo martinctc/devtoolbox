@@ -19,13 +19,26 @@
 #' @export
 
 extract_title <- function(fnc_name, package_name){
-  fnc_name %>%
-    utils::help(eval(package_name)) %>%
-    get_help_file() %>% # duplicate of utils:::.getHelpFile()
-    purrr::keep(~attr(.x, "Rd_tag") == "\\title") %>%
-    purrr::map(as.character) %>%
-    purrr::flatten_chr() %>%
-    paste0(., collapse="") %>%
-    stringr::str_remove("[\n]") %>%
-    stringr::str_trim()
+
+  help_text <-
+    fnc_name %>%
+    utils::help(eval(package_name))
+
+  # Function not available
+  if(length(help_text) == 0){
+
+    return("")
+
+  } else {
+
+    help_text %>%
+      get_help_file() %>% # duplicate of utils:::.getHelpFile()
+      purrr::keep(~attr(.x, "Rd_tag") == "\\title") %>%
+      purrr::map(as.character) %>%
+      purrr::flatten_chr() %>%
+      paste0(., collapse="") %>%
+      stringr::str_remove("[\n]") %>%
+      stringr::str_trim()
+
+  }
 }

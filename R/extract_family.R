@@ -20,24 +20,36 @@
 
 extract_family <- function(fnc_name, package_name){
 
-  p <-
+   help_text <-
     fnc_name %>%
-    utils::help(eval(package_name)) %>%
-    get_help_file() %>% # duplicate of utils:::.getHelpFile()
-    purrr::keep(~attr(.x, "Rd_tag") == "\\seealso") %>%
-    purrr::map(as.character) %>%
-    purrr::flatten_chr()
+    utils::help(eval(package_name))
 
-
-  if(length(p) == 0){
+   # Function not available
+  if(length(help_text) == 0){
 
     return("")
 
   } else {
-    p[[2]] %>% # Extract second element
-      stringr::str_remove("Other ") %>%
-      stringr::str_remove(":") %>%
-      stringr::str_remove("[\n]") %>%
-      stringr::str_trim()
+
+    p <-
+      help_text %>%
+      get_help_file() %>% # duplicate of utils:::.getHelpFile()
+      purrr::keep(~attr(.x, "Rd_tag") == "\\seealso") %>%
+      purrr::map(as.character) %>%
+      purrr::flatten_chr()
+
+    if(length(p) == 0){
+
+      return("")
+
+    } else {
+
+      p[[2]] %>% # Extract second element
+        stringr::str_remove("Other ") %>%
+        stringr::str_remove(":") %>%
+        stringr::str_remove("[\n]") %>%
+        stringr::str_trim()
+
+    }
   }
 }

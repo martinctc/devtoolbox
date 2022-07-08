@@ -1,0 +1,55 @@
+Package dependencies
+=======================================================================
+
+Column
+-----------------------------------------------------------------------
+
+```{r}
+dependencyList <- tools::package_dependencies(
+  pkg_deps,
+  reverse = FALSE,
+  recursive = FALSE,
+  db = NULL,
+  which = c("Depends", "Imports")
+)
+
+dependencyList <- Filter(function(x){!is.null(x)}, dependencyList)
+
+# If pkg A depends on pkg B, then A -> B
+# A is the SOURCE and B is the TARGET
+# This is UML dependency convention
+edges <- names(dependencyList) %>%
+  purrr::map(function(x){
+    dplyr::tibble(
+      SOURCE = rep(x, length(dependencyList[[x]])),
+      TARGET = dependencyList[[x]]
+    )}) %>%
+  bind_rows()
+
+# Get and save nodes
+nodes <- data.table::data.table(
+  node = unique(
+    c(
+      edges$SOURCE,
+      edges$TARGET
+    )
+  )
+)
+```
+
+### Package dependencies
+
+```{r}
+nodes_df <-
+  nodes %>%
+  mutate(id = node) %>%
+  rename(label = "node")
+
+edges_df <-
+  edges %>%
+  rename(from = "SOURCE",
+         to = "TARGET")
+
+visNetwork::visNetwork(nodes_df, edges_df, width = "100%") %>%
+  visNetwork::visEdges(arrows = "from")
+```

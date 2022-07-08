@@ -46,7 +46,9 @@ package by boxuancui, with credits due to the original author.
 }
 \section{Running the report}{
 
-You can run the minimal report and pass arguments directly to \code{run_rmd}:\if{html}{\out{<div class="R">}}\preformatted{run_rmd(pkgname = "devtoolbox")
+You can run the minimal report and pass arguments directly to \code{run_rmd}:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{run_rmd(pkgname = "devtoolbox")
 }\if{html}{\out{</div>}}
 }
 
